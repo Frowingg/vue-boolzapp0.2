@@ -1,6 +1,8 @@
 var root = new Vue({
     el: '#root',
     data: {
+		myClass: '',
+		letterToSearch: '',
 		newMessageText: '',
 		currentElement: 0,
 		contacts: [
@@ -103,7 +105,9 @@ var root = new Vue({
 				};
 				this.contacts[index].messages.push(newMessage);
 				this.newMessageText = '';
-				setTimeout(this.answareBack(index), 1000);
+				setTimeout(() => {
+					this.answareBack(index);
+				  }, 1000);
 			},
 			answareBack(index) {
 				newDate = dayjs().format('DD/MM/YYYY HH:mm:ss');
@@ -114,7 +118,9 @@ var root = new Vue({
 				}
 				this.contacts[index].messages.push(newMessage);
 			},
-			
-			
+			showOptions() {
+				myClass = 'show';
+			}
 		}
 });
+
