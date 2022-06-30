@@ -157,6 +157,7 @@ main{
     overflow-y: scroll;
 }
 .message{
+    position: relative;
     width: 270px;
     padding: 10px;
     background-color: white;
@@ -169,6 +170,39 @@ main{
     color: gray;
     font-size: 8px;
     align-self: flex-end;
+}
+.message i{
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-right: 10px;
+    margin-top: 5px;
+    color: gray;
+    display: none;
+}
+.message:hover i{
+    display: block;
+}
+#message-container{
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+    width:auto
+}
+.message-options{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px 20px;
+    background-color: #fff;
+    width: max-content;
+    display: none;
+}
+.message-options p{
+    line-height: 35px;
+}
+.show{
+    display: inline;
 }
 .sent{
     background-color: #d5f9ba;

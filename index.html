@@ -48,14 +48,14 @@
                 <div id="search">
                     <div id="search-bar">
                         <label for="search"><i class="fa-solid fa-magnifying-glass"></i></label>
-                        <input id="search" type="text" placeholder="Cerca o inizia nuova chat"> 
+                        <input id="search" type="text" placeholder="Cerca o inizia nuova chat" v-model="letterToSearch" @keyup.enter="searchContacts" >
                     </div>
 
                 </div>
 
                 <!-- CONTACT AREA -->
                 <div id="contact-area">
-                    <div @click="selectThisChat(index)" v-for="(singleCon, index) in contacts" class="singleContact">
+                    <div @click="selectThisChat(index)" v-for="(singleCon, index) in contacts" v-show="singleCon.visible" class="singleContact">
                         <img :src="'img/avatar' + contacts[index].avatar + '.jpg'" :alt="contacts[index].name">
                         <p>{{contacts[index].name}}</p>
                     </div>
@@ -86,10 +86,19 @@
 
                 <main>
                     
-                    <div v-for="message in contacts[currentElement].messages" class="message" :class="{'sent' : message.status === 'sent'}">
-                        <p>{{message.text}}</p>
-                        <span>{{message.date}}</span>
+                    <div id="message-container" v-for="message in contacts[currentElement].messages" >
+                        <div class="message" :class="{'sent' : message.status === 'sent'}">
+                            <p>{{message.text}}</p>
+                            <span>{{message.date}}</span> 
+                            <i class="fa-solid fa-angle-down"></i>                           
+                        </div>
+                        <!-- <div class="message-options" :class="myClass">
+                            <p>Message info</p>
+                            <p>Delede message</p>
+                        </div> -->
                     </div>
+                    
+                    
                     
                 </main>
 

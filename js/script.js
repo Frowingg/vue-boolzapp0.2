@@ -1,6 +1,8 @@
 var root = new Vue({
     el: '#root',
     data: {
+		myClass: '',
+		letterToSearch: '',
 		newMessageText: '',
 		currentElement: 0,
 		contacts: [
@@ -103,18 +105,30 @@ var root = new Vue({
 				};
 				this.contacts[index].messages.push(newMessage);
 				this.newMessageText = '';
-				setTimeout(this.answareBack(index), 1000);
+				setTimeout(() => {
+					this.answareBack(index);
+				  }, 1000);
 			},
 			answareBack(index) {
 				newDate = dayjs().format('DD/MM/YYYY HH:mm:ss');
 				newMessage = {
 					date: newDate,
-					text: 'ok bruh',
+					text: 'ok',
 					status: 'received'
 				}
 				this.contacts[index].messages.push(newMessage);
 			},
-			
-			
+			searchContacts() {
+				const letterToSearchLower = this.letterToSearch.toLowerCase();
+				this.contacts.forEach((element) => {
+					const contactNameLower = element.name.toLowerCase()
+					if(contactNameLower.includes(letterToSearchLower)) {
+						element.visible = true;
+					} else {
+						element.visible = false;
+					};
+				});
+			}
 		}
 });
+
