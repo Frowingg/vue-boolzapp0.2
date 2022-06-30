@@ -128,6 +128,8 @@ var root = new Vue({
 						element.visible = false;
 					};
 				});
+			showOptions() {
+				myClass = 'show';
 			}
 		}
 });

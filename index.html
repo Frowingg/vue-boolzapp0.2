@@ -55,7 +55,7 @@
 
                 <!-- CONTACT AREA -->
                 <div id="contact-area">
-                    <div @click="selectThisChat(index)" v-for="(singleCon, index) in contacts" v-show="singleCon.visible" class="singleContact">
+                    <div @click="selectThisChat(index)" v-for="(singleCon, index) in contacts" class="singleContact">
                         <img :src="'img/avatar' + contacts[index].avatar + '.jpg'" :alt="contacts[index].name">
                         <p>{{contacts[index].name}}</p>
                     </div>
@@ -96,6 +96,12 @@
                             <p>Message info</p>
                             <p>Delede message</p>
                         </div> -->
+                            <i @click="showOptions" class="fa-solid fa-angle-down"></i>                           
+                        </div>
+                        <div class="message-options" :class="myClass">
+                            <p>Message info</p>
+                            <p>Delede message</p>
+                        </div>
                     </div>
                     
                     
